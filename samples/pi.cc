@@ -3,7 +3,7 @@
 // pi.c
 //
 // Compile with:
-//   g++ -std=c++11 -o pi -lpthread pi.cc
+//   g++ -std=c++11 -o pi -pthread pi.cc
 //
 // Run with:
 //   ./pi <NUM_SAMPLES> <NUM_THREADS>
@@ -38,9 +38,13 @@
 //    constructed with a functional of type void(work&) handed an
 //    work& argument.
 //
-//  * My old laptop seems to only have two cores, so I could not test
-//    to see if I got great speedups with 3 or more cores.  Using more
-//    than two threads gave me *some* additional speedup.
+//  * My old Mac laptop seems to be only giving me two cores, so I
+//    did not see much speedup with 3 or more threds.  Using more than
+//    two threads gave me *some* additional speedup. On my old Linux
+//    laptop, I got speedups with up to 4 threads.  Beyond 4, there
+//    was no speedup. The speedup for each was nearly double, for
+//    two threads. The speedup on Linux was 3x and 4x for 3 and 4
+//    threads.
 //
 //  * I decided to make vectors and then count their contents, just so
 //    I could show off dividing up the data. If I actually just wanted

@@ -29,11 +29,11 @@ total effort.
 
 These can each be compiled in the same way, for example,
 
-    g++ std=c++11 -o walkchew -lpthread walkchew.cc
+    g++ std=c++11 -o walkchew -pthread walkchew.cc
 
 will create an executable named `walkchew` that can be run.
-Note the inclusion of the `-l` flag there to link in the POSIX
-thread library `libpthread`.
+Note the inclusion of the `-pthread` flag there to link in the POSIX
+thread library.
 
 ### STL thread examples
 
@@ -54,13 +54,13 @@ The line above blocks and waits until `t` is done.
 
 The `count_stl.cc` program can run two ways. If you compile it with
 
-    g++ -std=c++11 -o countm -DLOCK count.cc
+    g++ -std=c++11 -o countm -DLOCK -pthread count.cc
 
 it will compile a version of the code that uses a `std::mutex` object
 to synchronize access to the shared counter. If you instead compile it
 with
 
-    g++ -std=c++11 -o count count.cc
+    g++ -std=c++11 -o count -pthread count.cc
 
 then it will not use a mutex and the count will be off.
 
@@ -71,7 +71,7 @@ like I did with the older code above. I did not need to do this on my
 Mac OSX running g++, however.
 
 NOTE: many `std::thread` examples on-line use a more general form of
-spawning a thread to run a fuinction that takes arguments, something like
+spawning a thread to run a function that takes arguments, something like
 
     std::thread t {f,a1,a2,...,an};
 
@@ -97,7 +97,7 @@ should be about 3.14.
 
 You can compile this code with
 
-    g++ -std=c++11 -o pi pi.cc
+    g++ -std=c++11 -o pi -pthread pi.cc
 
 and run it with a line like
 
